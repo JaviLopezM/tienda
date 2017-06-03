@@ -1,5 +1,5 @@
 <?php
-
+use App\Product;
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -12,9 +12,15 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $products=Product::all();
+    return view('welcome', compact('products'));
 });
 Route::get('/store','StoreController@index');
 Route::auth();
 
 Route::get('/home', 'HomeController@index');
+Route::get('/product/{slug}',[
+    'as'=>'product-detail',
+    'uses'=>'StoreController@show'
+    ]);
+Route::get('/slider','StoreController@slide');

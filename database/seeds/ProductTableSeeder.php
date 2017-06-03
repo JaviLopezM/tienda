@@ -84,6 +84,42 @@ class ProductTableSeeder extends Seeder
                 'created_at'=>new DateTime(),
                 'updated_at'=>new DateTime(),
                 'category_id'=>2
+            ],
+            [
+                'name'=>'Camisetas Breaking Bad',
+                'slug'=>'slider-breaking',
+                'description'=> 'Breaking Bad sit amet, consectetur adipisicing elit. Eligendi non quis exercitationem culpa nesciunt nihil aut nostrum explicabo reprehenderit optio amet ab temporibus asperiores quasi cupiditate. Voluptatum ducimus voluptates voluptas',
+                'extract'=>'BB sit amet, consectetur adipisicing elit. Eligendi non quis exercitationem',
+                'price'=>'70.70',
+                'image'=>'http://maxcamisetas.com/wp-content/uploads/2013/01/slider-maxcamisetas-1.jpg',
+                'visible'=>1,
+                'created_at'=>new DateTime(),
+                'updated_at'=>new DateTime(),
+                'category_id'=>2
+            ],
+            [
+                'name'=>'Camisetas Súper Héroes',
+                'slug'=>'camisetas-sh',
+                'description'=> 'Camisetas Súper Héroes, consectetur adipisicing elit. Eligendi non quis exercitationem culpa nesciunt nihil aut nostrum explicabo reprehenderit optio amet ab temporibus asperiores quasi cupiditate. Voluptatum ducimus voluptates voluptas',
+                'extract'=>'Camisetas Súper Héroes, consectetur adipisicing elit. Eligendi non quis exercitationem',
+                'price'=>'70.70',
+                'image'=>'http://maxcamisetas.com/wp-content/uploads/2014/04/slider-maxcamisetas-21.jpg',
+                'visible'=>1,
+                'created_at'=>new DateTime(),
+                'updated_at'=>new DateTime(),
+                'category_id'=>1
+            ],
+            [
+            'name'=>'Juego de Tronos',
+            'slug'=>'game-thrones',
+            'description'=> 'Juego de Tronossit amet, consectetur adipisicing elit. Eligendi non quis exercitationem culpa nesciunt nihil aut nostrum explicabo reprehenderit optio amet ab temporibus asperiores quasi cupiditate. Voluptatum ducimus voluptates voluptas',
+            'extract'=>'Juego de Tronossit amet, consectetur adipisicing elit. Eligendi non quis exercitationem',
+            'price'=>'70.70',
+            'image'=>'http://maxcamisetas.com/wp-content/uploads/2013/01/slider-maxcamisetas-3.jpg',
+            'visible'=>1,
+            'created_at'=>new DateTime(),
+            'updated_at'=>new DateTime(),
+            'category_id'=>2
             ]);
         Product::insert($data);
 
