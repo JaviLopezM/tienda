@@ -16,7 +16,7 @@
                     </div>
                     <div class="panel-body" style="font-weight:bold; text-align: right">
                         {{$product->price}}€<hr>
-                        <a href="#" class="btn btn-danger"><i class="fa fa-cart-plus"></i> Añadir al carrito</a>
+                        <a href="{{ route('cart-add', $product->slug) }}" class="btn btn-danger"><i class="fa fa-cart-plus"></i> Añadir al carrito</a>
                         <a href="{{route('product-detail' , $product->slug)}}" class="btn btn-primary"><i class="fa fa-chevron-circle-right"></i>  Leer más</a>
                     </div>
                 </div>

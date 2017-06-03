@@ -15,7 +15,7 @@
                         </div>
                         <div class="panel-body" style="font-weight:bold; text-align: right">
                             {{number_format($product->price,2)}}€
-                            <a href="#" class="btn btn-warning">Añadir al carrito</a>
+                            <a href="{{ route('cart-add', $product->slug) }}" class="btn btn-warning">Añadir al carrito</a>
                             <a href="/" class="btn btn-primary">ir al inicio</a>
                         </div>
                     </div>

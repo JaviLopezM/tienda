@@ -29,5 +29,10 @@ img {
     transition: all 0.3s ease-in-out;
 }
 .navbar{
-    margin-bottom: 0px !important;
+    margin-bottom: 0 !important;
+}
+
+.mensaje-alerta{
+    font-size: larger !important;
+
 }
