@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container text-center">
-        <div class="age-header">
+        <div class="page-header">
             <h1><i class="fa fa-shopping-cart"></i> Carrito de la Compra</h1>
         </div>
         @if(count($cart))
@@ -59,7 +59,7 @@
             </table>
             <hr>
             <a href="{{ route('store') }}" class="btn btn-primary"><i class="fa fa-chevron-circle-left"></i> Seguir comprando</a>
-            <a href="#" class="btn btn-primary">Procesar pedido <i class="fa fa-chevron-circle-right"></i></a>
+            <a href="{{ route('order-detail') }}" class="btn btn-primary">Procesar pedido <i class="fa fa-chevron-circle-right"></i></a>
         </div>
 
             @else
