@@ -3,13 +3,13 @@
 @section('content')
     <section class="row new-post">
         <header>
-            <h3 style="margin-left: 16px">Perfil de {{ $user->name }}</h3>
+            <h3 style="margin-left:100px">Perfil de {{ $user->name }}</h3>
         </header>
         <div class="col-md-offset-2">
             <section class="row new-post">
 
             <div class="col-md-4" style="float: left; margin-top: 5em; ">
-                <img src="/images/default.jpg" class="img-rounded " width="200" height="200" >
+                <img src="/images/default.jpg" class="img-rounded " style="width: 200px">
             </div>
 
             <div class="col-md-6">
