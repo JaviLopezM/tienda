@@ -27,7 +27,7 @@ class ProductTableSeeder extends Seeder
             ],
             [
                 'name'=>'Camiseta Batman',
-                'slug'=>'camiseta-superman',
+                'slug'=>'camiseta-batman',
                 'description'=> 'Batman es mejor dolor sit amet, consectetur adipisicing elit. Eligendi non quis exercitationem culpa nesciunt nihil aut nostrum explicabo reprehenderit optio amet ab temporibus asperiores quasi cupiditate. Voluptatum ducimus voluptates voluptas',
                 'extract'=>'Batman es mejor sit amet, consectetur adipisicing elit. Eligendi non quis exercitationem',
                 'price'=>'45.00',

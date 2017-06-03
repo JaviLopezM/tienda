@@ -27,8 +27,14 @@
                         <td><img src="{{$item->image }}" style="width: 10em"> </td>
                         <td>{{ $item->name }}</td>
                         <td>{{ number_format($item->price,2) }}</td>
-                        <td>
-                            <input type="number" min="1" max="100" value="{{ $item->quantity }}" id="product_{{$item->id}}">
+                        <td><form class="form-horizontal" role="form" method="post" action="{{ route('cart-update', $item->slug)}}">
+                                {{ csrf_field() }}
+                            <input type="number" min="1" max="100"
+                                   value="{{ $item->quantity }}" name="num">
+                                 <button type="submit" class="btn btn-primary">
+                                    <i class="fa fa-refresh"></i> Actualiza
+                                </button>
+                            </form>
                         </td>
                         {{--Falta implementar el numero de elementos--}}
                         <td>{{ number_format($item->price * $item->quantity,2) }}</td>
@@ -39,9 +45,23 @@
                         </td>
                     </tr>
                     @endforeach
+                    <tr style="font-weight: bold;border-top: black 5px solid ">
+                        <td>
+                            <h3 style="font-weight: bold">Total</h3>
+                        </td>
+                        <td></td><td></td><td></td><td></td>
+                        <td>
+                            <h3>{{ number_format($total,2) }} €</h3>
+                        </td>
+
+                    </tr>
                 </tbody>
             </table>
+            <hr>
+            <a href="{{ route('store') }}" class="btn btn-primary"><i class="fa fa-chevron-circle-left"></i> Seguir comprando</a>
+            <a href="#" class="btn btn-primary">Procesar pedido <i class="fa fa-chevron-circle-right"></i></a>
         </div>
+
             @else
         <h3 class="mensaje-alerta span label label-warning">Tu carrito está vacío.</h3>
         @endif

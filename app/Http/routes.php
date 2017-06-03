@@ -18,10 +18,15 @@ Route::get('/', function () {
     $products=Product::all();
     return view('welcome', compact('products'));
 });
-Route::get('/store','StoreController@index');
+Route::get('/store',[
+    'as' => 'store',
+    'uses'=>'StoreController@index']);
 Route::auth();
 
-Route::get('/home', 'HomeController@index');
+Route::get('/home', [
+    'as'=>'perfil',
+    'uses'=>'HomeController@index']);
+
 Route::get('/product/{slug}',[
     'as'=>'product-detail',
     'uses'=>'StoreController@show'
@@ -45,4 +50,8 @@ Route::get('cart/delete/{product}', [
 Route::get('cart/trash', [
     'as' => 'cart-trash',
     'uses' => 'CartController@trash'
+]);
+Route::post('cart/update/{product}/', [
+    'as' => 'cart-update',
+    'uses' => 'CartController@update'
 ]);

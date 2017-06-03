@@ -36,3 +36,8 @@ img {
     font-size: larger !important;
 
 }
+/*Quitar efecto hover*/
+a.none{
+    pointer-events: none;
+    cursor: default;
+}

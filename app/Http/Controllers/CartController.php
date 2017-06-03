@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 //use Illuminate\Support\Facades\Session;
 use App\Product;
 use App\Http\Requests;
+use Illuminate\Support\Facades\Input;
 
 class CartController extends Controller
 {
@@ -17,7 +18,8 @@ class CartController extends Controller
     public function show()
     {
         $cart = \Session::get('cart');
-        return view('store.cart', compact('cart'));
+        $total = $this->total();
+        return view('store.cart', compact('cart', 'total'));
 
     }
     // añadir al carrito
@@ -44,5 +46,21 @@ class CartController extends Controller
         \Session::forget('cart');
 
         return redirect() ->route('cart-show');
+    }
+    public function update(Product $product)
+    {
+        $cart = \Session::get('cart');
+        $cart[$product->slug]->quantity = request()->get('num');
+        \Session::put('cart', $cart);
+
+        return redirect() ->route('cart-show');
+    }
+    public function total(){
+        $cart = \Session::get('cart');
+        $total = 0;
+        foreach ($cart as $item){
+            $total+= $item->price * $item->quantity;
+        }
+        return $total;
     }
 }
