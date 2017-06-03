@@ -9,7 +9,7 @@
             <p>
                 <a href="{{ route('cart-trash') }}" class="btn btn-danger"><i class="fa fa-trash"></i> Vaciar el Carrito</a>
             </p>
-        <div class="table-responsive">
+        <div class="table-responsive" style="margin-bottom: 50px">
             <table class="table table-striped table-hover table-bordered">
                 <thead>
                 <tr>
@@ -58,8 +58,10 @@
                 </tbody>
             </table>
             <hr>
-            <a href="{{ route('store') }}" class="btn btn-primary"><i class="fa fa-chevron-circle-left"></i> Seguir comprando</a>
-            <a href="{{ route('order-detail') }}" class="btn btn-primary">Procesar pedido <i class="fa fa-chevron-circle-right"></i></a>
+            <a href="{{ route('store') }}" class="btn btn-primary" style="font-size: larger">
+                <i class="fa fa-chevron-circle-left"></i> Seguir comprando</a>
+            <a href="{{ route('order-detail') }}" class="btn btn-primary" style="font-size: larger">
+                Procesar pedido <i class="fa fa-chevron-circle-right"></i></a>
         </div>
 
             @else

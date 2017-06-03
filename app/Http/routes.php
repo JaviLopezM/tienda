@@ -23,7 +23,7 @@ Route::get('/store',[
     'uses'=>'StoreController@index']);
 Route::auth();
 
-Route::get('/home', [
+Route::get('/home/{id}', [
     'as'=>'perfil',
     'uses'=>'HomeController@index']);
 

@@ -65,11 +65,11 @@
                         <li><a class="none"><i class="fa fa-user"></i></a></li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                {{ Auth::user()->name }} <span class="caret"></span>
+                                {{ Auth::user()->user }} <span class="caret"></span>
                             </a>
 
                             <ul class="dropdown-menu" role="menu">
-                                <li><a href="{{ url('/home') }}"><i class="fa fa-btn fa-id-badge"></i> Perfil</a></li>
+                                <li><a href="{{ route('perfil',Auth::user()->id) }}"><i class="fa fa-btn fa-id-badge"></i> Perfil</a></li>
                                 <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
                             </ul>
                         </li>

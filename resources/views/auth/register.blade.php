@@ -11,7 +11,7 @@
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                            <label for="name" class="col-md-4 control-label">Name</label>
+                            <label for="name" class="col-md-4 control-label">Nombre</label>
 
                             <div class="col-md-6">
                                 <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}">
@@ -23,7 +23,32 @@
                                 @endif
                             </div>
                         </div>
+                        <div class="form-group{{ $errors->has('last_name') ? ' has-error' : '' }}">
+                            <label for="name" class="col-md-4 control-label">Apellidos</label>
 
+                            <div class="col-md-6">
+                                <input id="name" type="text" class="form-control" name="last_name" value="{{ old('last_name') }}">
+
+                                @if ($errors->has('last_name'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('last_name') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="form-group{{ $errors->has('user') ? ' has-error' : '' }}">
+                            <label for="name" class="col-md-4 control-label">Nombre de Usuario</label>
+
+                            <div class="col-md-6">
+                                <input id="name" type="text" class="form-control" name="user" value="{{ old('user') }}">
+
+                                @if ($errors->has('user'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('user') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                             <label for="email" class="col-md-4 control-label">E-Mail Address</label>
 
@@ -33,6 +58,48 @@
                                 @if ($errors->has('email'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+
+                        <div class="form-group{{ $errors->has('address') ? ' has-error' : '' }}">
+                            <label for="name" class="col-md-4 control-label">Dirección</label>
+
+                            <div class="col-md-6">
+                                <input id="name" type="text" class="form-control" name="address" value="{{ old('address') }}">
+
+                                @if ($errors->has('address'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('address') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="form-group{{ $errors->has('locality') ? ' has-error' : '' }}">
+                            <label for="name" class="col-md-4 control-label">Localidad</label>
+
+                            <div class="col-md-6">
+                                <input id="name" type="text" class="form-control" name="locality" value="{{ old('locality') }}">
+
+                                @if ($errors->has('locality'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('locality') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="form-group{{ $errors->has('postal') ? ' has-error' : '' }}">
+                            <label for="name" class="col-md-4 control-label">Código Postal</label>
+
+                            <div class="col-md-6">
+                                <input id="name" type="text" pattern="[0-9]{4}" class="form-control"
+                                       name="postal" value="{{ old('postal') }}">
+
+                                @if ($errors->has('postal'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('postal') }}</strong>
                                     </span>
                                 @endif
                             </div>
