@@ -4,8 +4,8 @@
     <div class="container">
         <div class="row" id="products">
             @foreach($products as $product)
-            <div class="col-md-4 white-panel">
-                <div class="panel panel-default">
+            <div class="col-md-4 white-panel ">
+                <div class="panel panel-default demo">
 
                         <div class="panel-heading">{{ $product -> name }}</div>
                             <div class="panel-body">

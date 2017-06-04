@@ -70,8 +70,9 @@ class CartController extends Controller
         if(count(\Session::get('cart'))<=0) return redirect()-route('home');
         $cart = \Session::get('cart');
         $total = $this->total();
+        $user = Auth::user();
 
-        return view('store.order-detail', compact('cart', 'total'));
+        return view('store.order-detail', compact('cart', 'total', 'user'));
     }
     public function destroyUser($id)
     {

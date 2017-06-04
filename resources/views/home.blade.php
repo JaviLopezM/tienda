@@ -38,11 +38,11 @@
                         <label for="address">Dirección</label>
                         <input type="text" name="address" class="form-control" value="{{ $user->address }}" id="address">
                     </div>
-                    <div class="form-group {{ $errors->has('address') ? 'has-error' : '' }}">
+                    <div class="form-group {{ $errors->has('postal') ? 'has-error' : '' }}">
                         <label for="postal">Código Postal</label>
                         <input type="text" name="postal" class="form-control" value="{{ $user->postal }}" id="address">
                     </div>
-                    <div class="form-group {{ $errors->has('address') ? 'has-error' : '' }}">
+                    <div class="form-group {{ $errors->has('locality') ? 'has-error' : '' }}">
                         <label for="locality">Localidad</label>
                         <input type="text" name="locality" class="form-control" value="{{ $user->locality }}" id="address">
                     </div>
