@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 use App\User;
+use App\Product;
 use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
@@ -29,11 +30,12 @@ class HomeController extends Controller
         if($id == Auth::user()->id){
             $user=User::find($id);
             return view('home',compact('user'));
-        }else{
+        }else {
             return redirect('/');
         }
 
-
-
     }
+
+
+
 }

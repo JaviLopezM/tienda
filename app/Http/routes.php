@@ -14,10 +14,14 @@ Route::bind('product', function($slug){
    return App\Product::where('slug',$slug)->first();
 });
 
-Route::get('/', function () {
+Route::get('/', [
+    'as' => 'home',
+    function(){
     $products=Product::all();
     return view('welcome', compact('products'));
-});
+}]);
+
+
 Route::get('/store',[
     'as' => 'store',
     'uses'=>'StoreController@index']);
@@ -59,4 +63,12 @@ Route::get('order-detail', [
    'middleware' => 'auth',
     'as' => 'order-detail',
     'uses' => 'CartController@orderDetail'
+]);
+Route::post('/eliminar/{id}', [
+    'as' => 'eliminar',
+    'uses' => 'CartController@destroyUser'
+]);
+Route::post('/update', [
+    'as' => 'updateUser',
+    'uses' => 'CartController@updateUser'
 ]);

@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Product;
 use App\Http\Requests;
 use Illuminate\Support\Facades\Input;
+use App\User;
+use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
 {
@@ -40,7 +42,7 @@ class CartController extends Controller
 
         return redirect() ->route('cart-show');
     }
-    public function trash(Product $product)
+    public function trash()
     {
 
         \Session::forget('cart');
@@ -70,5 +72,31 @@ class CartController extends Controller
         $total = $this->total();
 
         return view('store.order-detail', compact('cart', 'total'));
+    }
+    public function destroyUser($id)
+    {
+        $user = User::findOrFail($id);
+        $user->delete();
+        $this->trash();
+
+        return redirect() ->route('home');
+    }
+    public function updateUser(Request $request)
+    {
+        $user = Auth::user();
+        $idUser = $user->id;
+        $user->user = $request['user'];
+        $user->name = $request['name'];
+        $user->last_name = $request['last_name'];
+        $user->email = $request['email'];
+        $user->address = $request['address'];
+        $user->postal =$request['postal'];
+        $user->locality = $request['locality'];
+        $user->update();
+
+        if ($request->user()->update()) {
+            $message = 'Perfil actualizado';
+        }
+        return redirect() ->route('perfil',compact('idUser'))->with(['message' => $message]);
     }
 }
