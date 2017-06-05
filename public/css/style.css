@@ -41,3 +41,6 @@ a.none{
     pointer-events: none;
     cursor: default;
 }
+.changeDirection{
+    visibility: hidden;
+}

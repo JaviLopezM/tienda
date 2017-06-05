@@ -10,6 +10,10 @@ use App\Product;
 | and give it the controller to call when that URI is requested.
 |
 */
+// Rutas Actualización a Laravel 5.3
+//Route::post('/logout', 'Auth\LoginController@logout');
+//
+Auth::routes();
 Route::bind('product', function($slug){
    return App\Product::where('slug',$slug)->first();
 });
@@ -71,4 +75,12 @@ Route::post('/eliminar/{id}', [
 Route::post('/update', [
     'as' => 'updateUser',
     'uses' => 'CartController@updateUser'
+]);
+Route::get('/keep', [
+    'as' => 'keep',
+    'uses' => 'CartController@keep'
+]);
+Route::post('/updateShipping', [
+    'as' => 'updateShipping',
+    'uses' => 'CartController@updateShipping'
 ]);

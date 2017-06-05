@@ -23,11 +23,13 @@ class CreateUsersTable extends Migration
             $table->string('postal');
             $table->string('locality');
             $table->string('name2');
+            $table->boolean('verified')->default(false);
+            $table->string('token')->nullable();
             $table->string('last_name2');
             $table->text('address2');
             $table->string('postal2');
             $table->string('locality2');
-            $table->enum('role',['user','admin']);
+            $table->enum('role',['user','admin'])->default('user');
             $table->string('active');
             $table->rememberToken();
             $table->timestamps();

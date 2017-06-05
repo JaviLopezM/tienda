@@ -86,10 +86,8 @@ class CartController extends Controller
     {
         $user = Auth::user();
         $idUser = $user->id;
-        $user->user = $request['user'];
         $user->name = $request['name'];
         $user->last_name = $request['last_name'];
-        $user->email = $request['email'];
         $user->address = $request['address'];
         $user->postal =$request['postal'];
         $user->locality = $request['locality'];
@@ -99,5 +97,30 @@ class CartController extends Controller
             $message = 'Perfil actualizado';
         }
         return redirect() ->route('perfil',compact('idUser'))->with(['message' => $message]);
+    }
+    public function updateShipping(Request $request)
+    {
+        $user = Auth::user();
+        $user->name2 = $request['name2'];
+        $user->last_name2 = $request['last_name2'];
+        $user->address2 = $request['address2'];
+        $user->postal2 =$request['postal2'];
+        $user->locality2 = $request['locality2'];
+        $user->update();
+
+        return redirect() ->route('order-detail');
+    }
+    public function keep()
+    {
+
+        $user = Auth::user();
+        $user->name2 = $user->name;
+        $user->last_name2 =  $user->last_name;
+        $user->address2 =  $user->address;
+        $user->postal2 = $user->postal;
+        $user->locality2 = $user->locality;
+        $user->update();
+
+        return redirect() ->route('order-detail');
     }
 }

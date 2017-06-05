@@ -28,8 +28,9 @@ return [
     | the Mailgun mail service which will provide reliable deliveries.
     |
     */
+    'host' => env('MAIL_HOST', $_ENV['MAIL_HOST']),
 
-    'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
+//    'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
 
     /*
     |--------------------------------------------------------------------------
@@ -41,8 +42,8 @@ return [
     | stay compatible with the Mailgun e-mail application by default.
     |
     */
-
-    'port' => env('MAIL_PORT', 587),
+    'port' => env('MAIL_PORT', $_ENV['MAIL_PORT']),
+//    'port' => env('MAIL_PORT', 587),
 
     /*
     |--------------------------------------------------------------------------
@@ -55,7 +56,7 @@ return [
     |
     */
 
-    'from' => ['address' => null, 'name' => null],
+    'from' => ['address' => "send.javierlopez@gmail.com", 'name' => "Shop Javier López"],
 
     /*
     |--------------------------------------------------------------------------
@@ -81,7 +82,8 @@ return [
     |
     */
 
-    'username' => env('MAIL_USERNAME'),
+    'username' => env('MAIL_USERNAME', $_ENV['MAIL_USERNAME']),
+//    'username' => env('MAIL_USERNAME'),
 
     /*
     |--------------------------------------------------------------------------
@@ -93,8 +95,9 @@ return [
     | connection so that the application will be able to send messages.
     |
     */
+    'password' => env('MAIL_PASSWORD', $_ENV['MAIL_PASSWORD']),
 
-    'password' => env('MAIL_PASSWORD'),
+   // 'password' => env('MAIL_PASSWORD'),
 
     /*
     |--------------------------------------------------------------------------

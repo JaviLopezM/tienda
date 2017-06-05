@@ -90,8 +90,8 @@ return [
     | will not be safe. Please do this before deploying an application!
     |
     */
-
-    'key' => env('APP_KEY'),
+    'key' => env('APP_KEY', $_ENV['APP_KEY']),
+//    'key' => env('APP_KEY'),
 
     'cipher' => 'AES-256-CBC',
 
@@ -147,6 +147,7 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
+        Illuminate\Notifications\NotificationServiceProvider::class,
 
 
         /*
@@ -205,6 +206,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
+        'Notification' => Illuminate\Support\Facades\Notification::class,
 
     ],
 

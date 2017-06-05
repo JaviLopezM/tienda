@@ -19,7 +19,7 @@
                 <form action="{{ route('updateUser') }}" method="post" enctype="multipart/form-data">
                     <div class="form-group {{ $errors->has('user') ? 'has-error' : '' }}">
                         <label for="user">Usuario</label>
-                        <input type="text" name="user" class="form-control" value="{{ $user->user }}" id="address">
+                        <input type="text" name="user" class="form-control" value="{{ $user->user }}" id="user" disabled>
                     </div>
                     <div class="form-group {{ $errors->has('name') ? 'has-error' : '' }}">
                         <label for="name">Nombre</label>
@@ -31,7 +31,7 @@
                     </div>
                     <div class="form-group {{ $errors->has('email') ? 'has-error' : '' }}">
                         <label for="email">e-Mail</label>
-                        <input type="text" name="email" class="form-control" value="{{ $user->email }}" id="email">
+                        <input type="text" name="email" class="form-control" value="{{ $user->email }}" id="email" disabled>
                     </div>
 
                     <div class="form-group {{ $errors->has('address') ? 'has-error' : '' }}">
@@ -40,11 +40,11 @@
                     </div>
                     <div class="form-group {{ $errors->has('postal') ? 'has-error' : '' }}">
                         <label for="postal">Código Postal</label>
-                        <input type="text" name="postal" class="form-control" value="{{ $user->postal }}" id="address">
+                        <input type="text" name="postal" class="form-control" value="{{ $user->postal }}" id="postal">
                     </div>
                     <div class="form-group {{ $errors->has('locality') ? 'has-error' : '' }}">
                         <label for="locality">Localidad</label>
-                        <input type="text" name="locality" class="form-control" value="{{ $user->locality }}" id="address">
+                        <input type="text" name="locality" class="form-control" value="{{ $user->locality }}" id="locality">
                     </div>
 
                     {{--Preparo per poder pujar imatge de perfil--}}

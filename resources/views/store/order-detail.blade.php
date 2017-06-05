@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container text-center" ng-controller="modalCtrl">
+    <div class="container text-center">
         <div class="page-header">
             <h1><i class="fa fa-shopping-cart"></i> Detalle Del Pedido</h1>
         </div>
-    </div>
+
         <div class="col-md-6">
             <h3>Datos del usuario</h3>
             <table class="table table-striped table-hover table-bordered">
@@ -25,10 +25,13 @@
             <tr><td>Código Postal:</td><td>{{Auth::user()->postal2}}</td></tr>
             <tr><td>Dirección:</td><td>{{Auth::user()->locality2}}</td></tr>
             <tr style="font-weight: bold"><td>Misma dirección de registro</td><td>Enviar a otra dirección</td></tr>
-            <tr><td><a class="btn btn-primary"> mantener</a></td><td><buton class="btn btn-primary" ng-click="showModal()"> Cambiar</buton></td></tr>
+            <tr><td><a class="btn btn-primary" href="{{ route('keep') }}"> mantener</a></td><td>
+                    <button class="btn btn-primary"  id="myBtn"> Cambiar</button>
+
+                </td></tr>
         </table>
     </div>
-        <div class="col-md-10" style="text-align: center">
+        <div class="col-md-10 col-md-offset-1" style="text-align: center">
             <h3>Datos del pedido</h3>
             <table class="table table-striped table-hover table-bordered">
                 <tr>
@@ -64,44 +67,80 @@
     <a href="" class="btn btn-primary" style="font-size: larger">
         Finalizar <i class="fa fa-paypal fa-x2"></i></a>
     </div>
+        {{--W3--}}
 
-    <div >
-    <div class="modal" ng-show="modalShow">
-        <div class="col-md-6">
-        <header>
-            <h3>Datos de envío</h3>
-        </header>
-        <form action="{{ route('updateUser') }}" method="post" enctype="multipart/form-data">
-            <div class="form-group {{ $errors->has('name2') ? 'has-error' : '' }}">
-                <label for="name2">Nombre</label>
-                <input type="text" name="name2" class="form-control" value="{{ $user->name2 }}" id="name">
-            </div>
-            <div class="form-group {{ $errors->has('last_name2') ? 'has-error' : '' }}">
-                <label for="last_name2">Apellidos</label>
-                <input type="text" name="last_name2" class="form-control" value="{{ $user->last_name2 }}" id="last_name">
-            </div>
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
 
-            <div class="form-group {{ $errors->has('address2') ? 'has-error' : '' }}">
-                <label for="address2">Dirección de envío</label>
-                <input type="text" name="address2" class="form-control" value="{{ $user->address2 }}" id="address">
-            </div>
-            <div class="form-group {{ $errors->has('postal2') ? 'has-error' : '' }}">
-                <label for="postal2">Código Postal</label>
-                <input type="text" name="postal2" class="form-control" value="{{ $user->postal2 }}" id="address">
-            </div>
-            <div class="form-group {{ $errors->has('address2') ? 'has-error' : '' }}">
-                <label for="locality">Localidad</label>
-                <input type="text" name="locality2" class="form-control" value="{{ $user->locality2 }}" id="address">
-            </div>
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Cambiar datos de envío</h4>
+                    </div>
+                    <div class="row">
+                    <div class="modal-body col-md-6 col-md-offset-3">
+                        <form action="{{ route('updateShipping') }}" method="post" enctype="multipart/form-data">
+                            <div class="form-group {{ $errors->has('name2') ? 'has-error' : '' }}">
+                                <label for="name2">Nombre</label>
+                                <input type="text" name="name2" class="form-control" value="{{ $user->name2 }}" id="name">
+                            </div>
+                            <div class="form-group {{ $errors->has('last_name2') ? 'has-error' : '' }}">
+                                <label for="last_name2">Apellidos</label>
+                                <input type="text" name="last_name2" class="form-control" value="{{ $user->last_name2 }}" id="last_name">
+                            </div>
 
-            <button type="submit" class="btn btn-primary">Actualizar</button>
-            <input type="hidden" value="{{ Session::token() }}" name="_token">
-            <br>
-        </form>
+                            <div class="form-group {{ $errors->has('address2') ? 'has-error' : '' }}">
+                                <label for="address2">Dirección de envío</label>
+                                <input type="text" name="address2" class="form-control" value="{{ $user->address2 }}" id="address">
+                            </div>
+                            <div class="form-group {{ $errors->has('postal2') ? 'has-error' : '' }}">
+                                <label for="postal2">Código Postal</label>
+                                <input type="text" name="postal2" class="form-control" value="{{ $user->postal2 }}" id="address">
+                            </div>
+                            <div class="form-group {{ $errors->has('locality2') ? 'has-error' : '' }}">
+                                <label for="locality2">Localidad</label>
+                                <input type="text" name="locality2" class="form-control" value="{{ $user->locality2 }}" id="address">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Actualizar</button>
+                            <input type="hidden" value="{{ Session::token() }}" name="_token">
+                            <br>
+                        </form>
+                    </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
 
-        <br>
+            </div>
+        </div>
+
+
     </div>
-    </div>
 
-    </div>
+
+
+{{--Fin W3--}}
+
+
+    {{--Inicio modal--}}
+    {{--<div class="modal fade" id="myModal" role="dialog">--}}
+        {{--<div class="modal-dialog">--}}
+
+                {{--<!-- Modal content-->--}}
+            {{--<div class="modal-content">--}}
+                {{--<div class="modal-header">--}}
+                    {{--<button type="button" class="close" data-dismiss="modal">&times;</button>--}}
+                    {{--<h3 class="modal-title">Datos de envío</h3>--}}
+
+
+                    {{--<br>--}}
+                {{--</div>--}}
+            {{--</div>--}}
+        {{--</div>--}}
+    {{--</div>--}}
+    {{--Final modal--}}
+
 @endsection
