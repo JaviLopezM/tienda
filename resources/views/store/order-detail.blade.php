@@ -97,7 +97,7 @@
                             </div>
                             <div class="form-group {{ $errors->has('postal2') ? 'has-error' : '' }}">
                                 <label for="postal2">Código Postal</label>
-                                <input type="text" name="postal2" class="form-control" value="{{ $user->postal2 }}" id="address">
+                                <input type="text" pattern="[0-9]{5}" name="postal2" class="form-control" value="{{ $user->postal2 }}" id="address">
                             </div>
                             <div class="form-group {{ $errors->has('locality2') ? 'has-error' : '' }}">
                                 <label for="locality2">Localidad</label>
@@ -122,25 +122,5 @@
 
 
 
-{{--Fin W3--}}
-
-
-    {{--Inicio modal--}}
-    {{--<div class="modal fade" id="myModal" role="dialog">--}}
-        {{--<div class="modal-dialog">--}}
-
-                {{--<!-- Modal content-->--}}
-            {{--<div class="modal-content">--}}
-                {{--<div class="modal-header">--}}
-                    {{--<button type="button" class="close" data-dismiss="modal">&times;</button>--}}
-                    {{--<h3 class="modal-title">Datos de envío</h3>--}}
-
-
-                    {{--<br>--}}
-                {{--</div>--}}
-            {{--</div>--}}
-        {{--</div>--}}
-    {{--</div>--}}
-    {{--Final modal--}}
 
 @endsection

@@ -1,5 +1,6 @@
 <?php
 use App\Product;
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -83,4 +84,7 @@ Route::get('/keep', [
 Route::post('/updateShipping', [
     'as' => 'updateShipping',
     'uses' => 'CartController@updateShipping'
+]);
+Route::get('/register/confirm/{token}', [
+    'uses' => 'Auth\RegisterController@confirmEmail'
 ]);

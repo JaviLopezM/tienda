@@ -6,6 +6,7 @@
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="panel-heading">Registro</div>
+                @include('partials.flash')
                 <div class="panel-body">
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}">
                         {{ csrf_field() }}
@@ -94,7 +95,7 @@
                             <label for="name" class="col-md-4 control-label">Código Postal</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" pattern="[0-9]{4}" class="form-control"
+                                <input id="name" type="text" pattern="[0-9]{5}" class="form-control"
                                        name="postal" value="{{ old('postal') }}">
 
                                 @if ($errors->has('postal'))

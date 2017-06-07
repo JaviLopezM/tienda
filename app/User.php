@@ -14,7 +14,7 @@ class User extends Authenticatable
      */
     use Notifiable;
     protected $fillable = [
-        'name', 'email', 'last_name', 'password', 'user', 'role', 'active', 'address', 'locality', 'postal', 'name2', 'last_name2', 'address2', 'locality2', 'postal2'
+        'name', 'email', 'last_name', 'password', 'user', 'role', 'verified', 'active', 'address', 'locality', 'postal', 'name2', 'last_name2', 'address2', 'locality2', 'postal2'
     ];
 
     /**
@@ -25,4 +25,17 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public static function boot(){
+        parent::boot();
+
+        static::creating(function ($user) {
+            $user->token = str_random(40);
+        });
+    }
+    public function hasVerified(){
+        $this->verified = true;
+        $this->token = null;
+        $this->save();
+    }
 }
