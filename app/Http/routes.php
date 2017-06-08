@@ -88,3 +88,14 @@ Route::post('/updateShipping', [
 Route::get('/register/confirm/{token}', [
     'uses' => 'Auth\RegisterController@confirmEmail'
 ]);
+
+Route::get('payment', array(
+    'as' => 'payment',
+    'uses' => 'PaypalController@postPayment',
+));
+
+Route::get('payment/status', array(
+    'as' => 'payment.status',
+    'uses' => 'PaypalController@getPaymentStatus',
+));
+http://javishop.com/payment/status?paymentId=PAY-6EJ223598P825001CLE4G4ZI&token=EC-9FE48632233156052&PayerID=Z4HVLJ3HALDLQ

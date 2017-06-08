@@ -81,7 +81,7 @@ return [
 	'string'                => 'El campo :attribute debe ser una cadena.',
 	'timezone'              => 'El campo :attribute debe ser una zona válida.',
 	'unique'                => 'El campo :attribute ya ha sido tomado.',
-	'url'                   => 'El formato de :attribute es inválido.',
+	'url'                   => 'El formato de :attribute no es válido.',
 	'uploaded'              => 'El campo :attribute no ha podido ser cargado.',
 
 	/*

@@ -64,10 +64,13 @@
     <div class="col-md-10" style="text-align: center; margin-bottom: 50px">
     <a href="{{ route('cart-show') }}" class="btn btn-primary" style="font-size: larger">
         <i class="fa fa-chevron-circle-left fa-x2"></i> Volver al carrito</a>
-    <a href="" class="btn btn-primary" style="font-size: larger">
+    <a href="{{ route('payment') }}" class="btn btn-primary" style="font-size: larger">
         Finalizar <i class="fa fa-paypal fa-x2"></i></a>
+        <a href="{{ route('payment') }}" class="btn btn-warning">
+            Pagar con <i class="fa fa-cc-paypal fa-2x"></i>
+        </a>
     </div>
-        {{--W3--}}
+
 
         <!-- Modal -->
         <div class="modal fade" id="myModal" role="dialog">

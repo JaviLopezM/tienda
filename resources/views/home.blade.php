@@ -1,18 +1,16 @@
 @extends('layouts.app')
 
 @section('content')
-    <section class="row new-post">
+    <section class="row" style=" margin-bottom: 50px">
         <header>
             <h3 style="margin-left:100px">Perfil de {{ $user->user }}</h3>
         </header>
-        <div class="col-md-offset-2">
-            <section class="row new-post">
-
-            <div class="col-md-4" style="float: left; margin-top: 5em; ">
-                <img src="/images/default.jpg" class="img-rounded " style="width: 200px">
+        <div class="row new-post">
+            <div class="col-xs-10 col-xs-offset-1 col-md-2 col-md-offset-2 " style="margin-top: 5em; ">
+                <img src="/images/default.jpg" class="img-rounded ">
             </div>
 
-            <div class="col-md-6">
+            <div class="col-xs-10 col-xs-offset-1 col-md-6 form">
                 <header>
                     <h3>Datos del perfil</h3>
                 </header>
@@ -53,21 +51,24 @@
                     {{--<label for="imagen">Imagen </label>--}}
                     {{--<input type="file" name="imagen" class="form-control" id="imagen">--}}
                     {{--</div>--}}
-
+                    <div style="float: right; margin-left: 20px">
                     <button type="submit" class="btn btn-primary">Actualizar</button>
                     <input type="hidden" value="{{ Session::token() }}" name="_token">
-                    <br>
+                    </div>
                 </form>
-
-                <br>
+                <div style="text-align:right">
 
                 {!! Form::open(['method' => 'POST','route' => ['eliminar', $user->id]]) !!}
                 {!! csrf_field() !!}
                 {!! Form::submit('Dar de baja', ['class' => 'btn btn-danger']) !!}
                 {!! Form::close() !!}
+                </div>
+
             </div>
 
+
         </div>
+
     </section>
 
 @endsection

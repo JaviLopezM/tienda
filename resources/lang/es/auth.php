@@ -13,7 +13,7 @@ return [
 	|
 	*/
 
-    'failed' => 'Las credenciales introducidas son incorrectas. Asegúrate de que has introducido los datos correctos y que has validado el e-mail de confirmación.',
+    'failed' => 'Las credenciales introducidas no son correctas. Asegúrate de que has introducido los datos correctamente y has validado el e-mail de confirmación.',
     'throttle' => 'Demasiados intentos de acceso. Inténtelo de nuevo en :seconds segundos.',
 
 ];
