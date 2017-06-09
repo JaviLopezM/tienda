@@ -32,8 +32,10 @@ class StoreController extends Controller
     public function totalqty(){
         $cart = \Session::get('cart');
         $totalqty = 0;
-        foreach ($cart as $item){
-            $totalqty+= $item->quantity;
+        if ($cart!= null) {
+            foreach ($cart as $item) {
+                $totalqty += $item->quantity;
+            }
         }
         return $totalqty;
     }

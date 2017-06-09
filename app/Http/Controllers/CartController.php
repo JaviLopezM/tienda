@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 //use Illuminate\Support\Facades\Session;
+
 use App\Product;
 use App\Http\Requests;
-use Illuminate\Support\Facades\Input;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 
@@ -69,8 +69,10 @@ class CartController extends Controller
     public function totalqty(){
         $cart = \Session::get('cart');
         $totalqty = 0;
-        foreach ($cart as $item){
-            $totalqty+= $item->quantity;
+        if ($cart!= null) {
+            foreach ($cart as $item) {
+                $totalqty += $item->quantity;
+            }
         }
         return $totalqty;
     }

@@ -64,7 +64,7 @@
     <div class="col-md-10" style="text-align: center; margin-bottom: 50px">
     <a href="{{ route('cart-show') }}" class="btn btn-primary" style="font-size: larger">
         <i class="fa fa-chevron-circle-left fa-x2"></i> Volver al carrito</a>
-    <a href="" class="btn btn-primary" style="font-size: larger">
+    <a href="{{ route('payment') }}" class="btn btn-primary" style="font-size: larger">
         Finalizar <i class="fa fa-paypal fa-x2"></i></a>
     </div>
         {{--W3--}}
@@ -110,7 +110,7 @@
                     </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
                     </div>
                 </div>
 

@@ -24,8 +24,10 @@ Route::get('/', [
     function(){
         $cart = \Session::get('cart');
         $totalqty = 0;
+        if ($cart!= null){
         foreach ($cart as $item){
-            $totalqty+= $item->quantity;
+            $totalqty += $item->quantity;
+        }
         }
 
 
@@ -96,3 +98,13 @@ Route::post('/updateShipping', [
 Route::get('/register/confirm/{token}', [
     'uses' => 'Auth\RegisterController@confirmEmail'
 ]);
+
+Route::get('payment', array(
+    'as' => 'payment',
+    'uses' => 'PaypalController@postPayment',
+));
+
+Route::get('payment/status', array(
+    'as' => 'payment.status',
+    'uses' => 'PaypalController@getPaymentStatus',
+));
