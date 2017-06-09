@@ -22,14 +22,22 @@ Route::bind('product', function($slug){
 Route::get('/', [
     'as' => 'home',
     function(){
+        $cart = \Session::get('cart');
+        $totalqty = 0;
+        foreach ($cart as $item){
+            $totalqty+= $item->quantity;
+        }
+
+
     $products=Product::all();
-    return view('welcome', compact('products'));
+    return view('welcome', compact('products','totalqty'));
 }]);
 
 
 Route::get('/store',[
     'as' => 'store',
-    'uses'=>'StoreController@index']);
+    'uses'=> 'StoreController@index'
+]);
 Route::auth();
 
 Route::get('/home/{id}', [

@@ -62,8 +62,11 @@
                         <li><a href="{{ url('/login') }}">Login</a></li>
                         <li><a href="{{ url('/register') }}">Registro</a></li>
                     @else
-                        <li><a href="{{ route('cart-show') }}" ><i class="fa fa-shopping-cart"></i></a></li>
-                        <li><a class="none"><i class="fa fa-user"></i></a></li>
+                        <li><a href="{{ route('cart-show') }}" ><i class="fa fa-shopping-cart"></i>
+                            <span>
+                            {{$totalqty}}
+                            </span></a></li>
+                        <li><a class="none"><i class="fa fa-user"></i>                           </a></li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                 {{ Auth::user()->user }} <span class="caret"></span>

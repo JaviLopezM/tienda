@@ -21,7 +21,8 @@ class CartController extends Controller
     {
         $cart = \Session::get('cart');
         $total = $this->total();
-        return view('store.cart', compact('cart', 'total'));
+        $totalqty = $this->totalqty();
+        return view('store.cart', compact('cart', 'total', 'totalqty'));
 
     }
     // añadir al carrito
@@ -65,14 +66,23 @@ class CartController extends Controller
         }
         return $total;
     }
+    public function totalqty(){
+        $cart = \Session::get('cart');
+        $totalqty = 0;
+        foreach ($cart as $item){
+            $totalqty+= $item->quantity;
+        }
+        return $totalqty;
+    }
     public function orderDetail()
     {
         if(count(\Session::get('cart'))<=0) return redirect()-route('home');
         $cart = \Session::get('cart');
         $total = $this->total();
         $user = Auth::user();
+        $totalqty = $this->totalqty();
 
-        return view('store.order-detail', compact('cart', 'total', 'user'));
+        return view('store.order-detail', compact('cart', 'total', 'user', 'totalqty'));
     }
     public function destroyUser($id)
     {
