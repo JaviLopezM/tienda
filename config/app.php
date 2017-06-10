@@ -150,6 +150,7 @@ return [
         Illuminate\Notifications\NotificationServiceProvider::class,
 
 
+
         /*
          * Application Service Providers...
          */
@@ -158,6 +159,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
+        Thujohn\Rss\RssServiceProvider::class,
 
     ],
 
@@ -208,6 +210,7 @@ return [
         'Html' => Collective\Html\HtmlFacade::class,
         'Notification' => Illuminate\Support\Facades\Notification::class,
         'Input'     => Illuminate\Support\Facades\Input::class,
+        'Rss' => Thujohn\Rss\RssFacade::class,
 
     ],
 

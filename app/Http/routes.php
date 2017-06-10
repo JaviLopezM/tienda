@@ -114,3 +114,5 @@ Route::get('/order/{id}', array(
     'uses' => 'HomeController@getorder',
 ));
 
+Route::get('/genRss', 'HomeController@genRss');
+Route::get('/rss', 'HomeController@rss');
