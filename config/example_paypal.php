@@ -1,9 +1,11 @@
 <?php
-
+		//		
+		//RENAME THIS DOCUMENTO TO paypal.php AND EDIT THE CREDENTIALS
+		//
 return array(
     // set your paypal credential
-    'client_id' => 'ARzxNHZNzLVTELrnBsbvYslRm42-HO0WCXjAs2imE9vfymHaOyj4pOKCESrTF7m8FTPT6r-xa_YaDgjt',
-    'secret' => 'EBu-0pfj85iYlazSxnawrr_9c7qlb-1vedvX8v53kGueLDgyG5vICskEda1e5D8FTQfVOJbNnLlvCYj-',
+    'client_id' => 'CREDENTIALS FROM PAYPAL',
+    'secret' => 'CREDENTIALS FROM PAYPAL',
 
     /**
      * SDK configuration

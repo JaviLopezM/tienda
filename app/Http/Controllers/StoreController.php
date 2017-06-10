@@ -10,18 +10,33 @@ class StoreController extends Controller
 {
     public function index()
     {
-        $products =Product::all();
-        //dd($products);
-        return view('store.index', compact('products'));
+        //Seleccionar todos los productos de una categoria:
+        //  $products = Product::having('category_id', '=', 1)->get();
+        $products = Product::orderBy('category_id')->get();
+        $totalqty = $this->totalqty();
+          return view('store.index', compact('products', 'totalqty'));
     }
     public function show($slug)
     {
+        $products = Product::all();
         $product = Product::where('slug', $slug)->first(); //el ->first indica que utilice el primero que encuentre.
-        return view ('store.show', compact('product'));
+        $totalqty = $this->totalqty();
+        return view ('store.show', compact('product', 'products','totalqty'));
     }
     public function slide()
     {
         $products=Product::all();
         return view('store.partials.slider', compact('products'));
+    }
+
+    public function totalqty(){
+        $cart = \Session::get('cart');
+        $totalqty = 0;
+        if ($cart!= null) {
+            foreach ($cart as $item) {
+                $totalqty += $item->quantity;
+            }
+        }
+        return $totalqty;
     }
 }

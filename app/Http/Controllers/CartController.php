@@ -4,24 +4,30 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 //use Illuminate\Support\Facades\Session;
+
 use App\Product;
 use App\Http\Requests;
-use Illuminate\Support\Facades\Input;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
 {
+
     public function __construct()
     {
+        $ship=15;
         if(!\Session::has('cart')) \Session::put('cart', array());
+        if(!\Session::has('shippment')) \Session::put('shippment', $ship);
+
     }
     // Mostrar carrito
     public function show()
     {
         $cart = \Session::get('cart');
         $total = $this->total();
-        return view('store.cart', compact('cart', 'total'));
+        $totalqty = $this->totalqty();
+        $ship = \Session::get('shippment');
+        return view('store.cart', compact('cart', 'total', 'totalqty','ship'));
 
     }
     // añadir al carrito
@@ -31,6 +37,7 @@ class CartController extends Controller
         $product -> quantity =1;
         $cart[$product ->slug] = $product;
         \Session::put('cart', $cart);
+
 
         return redirect() ->route('cart-show');
     }
@@ -58,12 +65,24 @@ class CartController extends Controller
         return redirect() ->route('cart-show');
     }
     public function total(){
+        $ship = \Session::get('shippment');
         $cart = \Session::get('cart');
         $total = 0;
         foreach ($cart as $item){
             $total+= $item->price * $item->quantity;
         }
+
         return $total;
+    }
+    public function totalqty(){
+        $cart = \Session::get('cart');
+        $totalqty = 0;
+        if ($cart!= null) {
+            foreach ($cart as $item) {
+                $totalqty += $item->quantity;
+            }
+        }
+        return $totalqty;
     }
     public function orderDetail()
     {
@@ -71,8 +90,10 @@ class CartController extends Controller
         $cart = \Session::get('cart');
         $total = $this->total();
         $user = Auth::user();
+        $ship = \Session::get('shippment');
+        $totalqty = $this->totalqty();
 
-        return view('store.order-detail', compact('cart', 'total', 'user'));
+        return view('store.order-detail', compact('cart', 'total', 'user', 'totalqty', 'ship'));
     }
     public function destroyUser($id)
     {

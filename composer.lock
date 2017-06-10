@@ -4,7 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "584354e26e42c384b2ef3c45fe444a24",
+
+    "content-hash": "0fe3cd234c406c1b21677189ace3d76b",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -970,23 +971,23 @@
         },
         {
             "name": "paypal/rest-api-sdk-php",
-            "version": "1.11.0",
+
+            "version": "v1.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/paypal/PayPal-PHP-SDK.git",
-                "reference": "7e664f12be32b975575371e8ad3bc17b6b318851"
+                "reference": "70b03c51879fa3d2392d89052b96e92f6e6f6512"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/paypal/PayPal-PHP-SDK/zipball/7e664f12be32b975575371e8ad3bc17b6b318851",
-                "reference": "7e664f12be32b975575371e8ad3bc17b6b318851",
+                "url": "https://api.github.com/repos/paypal/PayPal-PHP-SDK/zipball/70b03c51879fa3d2392d89052b96e92f6e6f6512",
+                "reference": "70b03c51879fa3d2392d89052b96e92f6e6f6512",
                 "shasum": ""
             },
             "require": {
                 "ext-curl": "*",
                 "ext-json": "*",
-                "php": ">=5.3.0",
-                "psr/log": "^1.0.0"
+                "php": ">=5.3.0"
             },
             "require-dev": {
                 "phpunit/phpunit": "3.7.*"
@@ -999,7 +1000,7 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "Apache-2.0"
+                "Apache2"
             ],
             "authors": [
                 {
@@ -1015,7 +1016,8 @@
                 "rest",
                 "sdk"
             ],
-            "time": "2016-12-14T21:59:21+00:00"
+
+            "time": "2015-08-17T19:32:59+00:00"
         },
         {
             "name": "psr/http-message",

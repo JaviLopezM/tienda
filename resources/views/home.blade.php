@@ -60,7 +60,9 @@
 
                 {!! Form::open(['method' => 'POST','route' => ['eliminar', $user->id]]) !!}
                 {!! csrf_field() !!}
-                {!! Form::submit('Dar de baja', ['class' => 'btn btn-danger']) !!}
+                <button type="submit" onclick="return confirm('Está seguro de eliminar su cuenta?')"
+                class="btn btn-danger">Dar de baja</button>
+
                 {!! Form::close() !!}
                 </div>
 

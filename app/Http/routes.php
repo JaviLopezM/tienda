@@ -22,14 +22,24 @@ Route::bind('product', function($slug){
 Route::get('/', [
     'as' => 'home',
     function(){
+        $cart = \Session::get('cart');
+        $totalqty = 0;
+        if ($cart!= null){
+        foreach ($cart as $item){
+            $totalqty += $item->quantity;
+        }
+        }
+
+
     $products=Product::all();
-    return view('welcome', compact('products'));
+    return view('welcome', compact('products','totalqty'));
 }]);
 
 
 Route::get('/store',[
     'as' => 'store',
-    'uses'=>'StoreController@index']);
+    'uses'=> 'StoreController@index'
+]);
 Route::auth();
 
 Route::get('/home/{id}', [
@@ -98,4 +108,4 @@ Route::get('payment/status', array(
     'as' => 'payment.status',
     'uses' => 'PaypalController@getPaymentStatus',
 ));
-http://javishop.com/payment/status?paymentId=PAY-6EJ223598P825001CLE4G4ZI&token=EC-9FE48632233156052&PayerID=Z4HVLJ3HALDLQ
+

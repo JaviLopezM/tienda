@@ -29,11 +29,22 @@ class HomeController extends Controller
     {
         if($id == Auth::user()->id){
             $user=User::find($id);
-            return view('home',compact('user'));
+            $totalqty = $this->totalqty();
+            return view('home',compact('user', 'totalqty'));
         }else {
             return redirect('/');
         }
 
+    }
+    public function totalqty(){
+        $cart = \Session::get('cart');
+        $totalqty = 0;
+        if ($cart!= null) {
+            foreach ($cart as $item) {
+                $totalqty += $item->quantity;
+            }
+        }
+        return $totalqty;
     }
 
 

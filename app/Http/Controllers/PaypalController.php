@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-//use Illuminate\Foundation\Bus\DispatchesCommands;
+
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
+use App\Http\Requests;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
+
 
 
 use PayPal\Rest\ApiContext;
@@ -18,20 +21,19 @@ use PayPal\Api\ItemList;
 use PayPal\Api\Payer;
 use PayPal\Api\Payment;
 use PayPal\Api\RedirectUrls;
-use PayPal\Api\PaymentDetail;
 use PayPal\Api\PaymentExecution;
 use PayPal\Api\Transaction;
 
 use App\Order;
 use App\OrderItem;
 
-//class PaypalController extends Controller
 
 class PaypalController extends BaseController
 {
-	private $_api_context;
+    private $_api_context;
 
-	public function __construct()
+    public function __construct()
+
     {
         // setup PayPal api context
         $paypal_conf = \Config::get('paypal');
@@ -39,8 +41,10 @@ class PaypalController extends BaseController
         $this->_api_context->setConfig($paypal_conf['settings']);
     }
 
-	public function postPayment()
+
+    public function postPayment()
     {
+        $shippment = \Session::get('shippment');
         $payer = new Payer();
         $payer->setPaymentMethod('paypal');
 
@@ -67,9 +71,13 @@ class PaypalController extends BaseController
 
         $details = new Details();
         $details->setSubtotal($subtotal)
-            ->setShipping(10);
 
-        $total = $subtotal + 10;
+        // Gastos de envio
+
+            ->setShipping($shippment);
+
+        $total = $subtotal + $shippment;
+
 
         $amount = new Amount();
         $amount->setCurrency($currency)
@@ -79,7 +87,8 @@ class PaypalController extends BaseController
         $transaction = new Transaction();
         $transaction->setAmount($amount)
             ->setItemList($item_list)
-            ->setDescription('Pedido de prueba desde shop-javierlopez');
+            ->setDescription('Pedido de prueba en mi Laravel App Store');
+
 
         $redirect_urls = new RedirectUrls();
         $redirect_urls->setReturnUrl(\URL::route('payment.status'))
@@ -93,7 +102,8 @@ class PaypalController extends BaseController
 
         try {
             $payment->create($this->_api_context);
-        } catch (\PayPal\Exception\PayPalConnectionException$ex) {
+
+        } catch (\PayPal\Exception\PPConnectionException $ex) {
             if (\Config::get('app.debug')) {
                 echo "Exception: " . $ex->getMessage() . PHP_EOL;
                 $err_data = json_decode($ex->getData(), true);
@@ -111,7 +121,9 @@ class PaypalController extends BaseController
         }
 
         // add payment ID to session
-        \Session::put('paypal_paymentId', $payment->getId());
+
+        \Session::put('paypal_payment_id', $payment->getId());
+
 
         if(isset($redirect_url)) {
             // redirect to paypal
@@ -123,34 +135,40 @@ class PaypalController extends BaseController
 
     }
 
-	public function getPaymentStatus()
+    // Respuesta de PayPal
+    public function getPaymentStatus()
     {
         // Get the payment ID before session clear
-        $paymentId = \Session::get('paymentId');
+        $payment_id = \Session::get('paypal_payment_id');
+
+        // clear the session payment ID
+        \Session::forget('paypal_payment_id');
+
+        $payerId = Input::get('PayerID');
+        $token = Input::get('token');
 
 
-
-
-        $payerId = \Request::get('payer_id');
-        $token = \Request::get('token');
 
         if (empty($payerId) || empty($token)) {
             return \Redirect::route('home')
                 ->with('message', 'Hubo un problema al intentar pagar con Paypal');
         }
 
-        $payment = Payment::get($paymentId, $this->_api_context);
+
+        $payment = Payment::get($payment_id, $this->_api_context);
 
         $execution = new PaymentExecution();
-        $execution->setPayerId(\Request::get('payer_id'));
+        $execution->setPayerId(Input::get('PayerID'));
+
+
 
         $result = $payment->execute($execution, $this->_api_context);
 
-        // clear the session payment ID
-        \Session::forget('paymentId');
-        if ($result->getState() == 'approved') {
 
+        if ($result->getState() == 'approved') {
+// Guardo la información del pedido.
             $this->saveOrder();
+//Elimino el carro
 
             \Session::forget('cart');
 
@@ -161,11 +179,13 @@ class PaypalController extends BaseController
             ->with('message', 'La compra fue cancelada');
     }
 
-	protected function saveOrder()
+// Funciones para administrar los pedidos
+    protected function saveOrder()
     {
         $subtotal = 0;
         $cart = \Session::get('cart');
-        $shipping = 10;
+        $shipping = \Session::get('shippment');
+
 
         foreach($cart as $producto){
             $subtotal += $producto->quantity * $producto->price;
@@ -182,7 +202,9 @@ class PaypalController extends BaseController
         }
     }
 
-	protected function saveOrderItem($producto, $order_id)
+// Funciones para administrar los items de los pedidos
+    protected function saveOrderItem($producto, $order_id)
+
     {
         OrderItem::create([
             'price' => $producto->price,
@@ -193,3 +215,4 @@ class PaypalController extends BaseController
     }
 
 }
+
