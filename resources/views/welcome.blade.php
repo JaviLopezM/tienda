@@ -1,10 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-    @if(\Session::has('message'))
         @include('store.partials.message')
-    @endif
-    {{--@include('partials.flash')--}}
+
     {{--@include('store.partials.nav')--}}
     @include('store.partials.slider')
 <div class="container">

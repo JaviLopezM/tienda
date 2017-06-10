@@ -109,3 +109,8 @@ Route::get('payment/status', array(
     'uses' => 'PaypalController@getPaymentStatus',
 ));
 
+Route::get('/order/{id}', array(
+    'as' => 'order',
+    'uses' => 'HomeController@getorder',
+));
+

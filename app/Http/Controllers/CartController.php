@@ -20,7 +20,7 @@ class CartController extends Controller
         if(!\Session::has('shippment')) \Session::put('shippment', $ship);
 
     }
-    // Mostrar carrito
+    // Mostrar detalles del producto
     public function show()
     {
         $cart = \Session::get('cart');
