@@ -158,6 +158,7 @@
         <a href="mailto:info@javierlopez.ml" class="btn btn-primary"><i class="fa fa-envelope"></i></a>
         <a href="http://javierlopez.ml" class="btn btn-primary"><i class="fa fa fa-globe"></i></a>
         <a href="https://github.com/JaviLopezM/tienda" class="btn btn-primary"><i class="fa fa fa-github"></i></a>
+        <a href="/rss" class="btn btn-warning"><i class="fa fa fa-rss"></i></a>
     </div>
 </footer>
 </body>
