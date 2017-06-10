@@ -91,19 +91,19 @@ class ProductTableSeeder extends Seeder
                 'description'=> 'Breaking Bad sit amet, consectetur adipisicing elit. Eligendi non quis exercitationem culpa nesciunt nihil aut nostrum explicabo reprehenderit optio amet ab temporibus asperiores quasi cupiditate. Voluptatum ducimus voluptates voluptas',
                 'extract'=>'BB sit amet, consectetur adipisicing elit. Eligendi non quis exercitationem',
                 'price'=>'70.70',
-                'image'=>'http://maxcamisetas.com/wp-content/uploads/2013/01/slider-maxcamisetas-1.jpg',
+                'image'=>'https://ae01.alicdn.com/kf/HTB1MhvnIVXXXXb.XXXXq6xXFXXXA/Fresco-con-estilo-Heisenberg-camiseta-del-estilo-del-verano-Breaking-Bad-camisetas-para-hombre-insignia-para.jpg',
                 'visible'=>1,
                 'created_at'=>new DateTime(),
                 'updated_at'=>new DateTime(),
-                'category_id'=>2
+                'category_id'=>1
             ],
             [
-                'name'=>'Camisetas Súper Héroes',
+                'name'=>'Camisetas Ant Man',
                 'slug'=>'camisetas-sh',
-                'description'=> 'Camisetas Súper Héroes, consectetur adipisicing elit. Eligendi non quis exercitationem culpa nesciunt nihil aut nostrum explicabo reprehenderit optio amet ab temporibus asperiores quasi cupiditate. Voluptatum ducimus voluptates voluptas',
-                'extract'=>'Camisetas Súper Héroes, consectetur adipisicing elit. Eligendi non quis exercitationem',
+                'description'=> 'Camisetas Ant Man, consectetur adipisicing elit. Eligendi non quis exercitationem culpa nesciunt nihil aut nostrum explicabo reprehenderit optio amet ab temporibus asperiores quasi cupiditate. Voluptatum ducimus voluptates voluptas',
+                'extract'=>'Camisetas Ant Man, consectetur adipisicing elit. Eligendi non quis exercitationem',
                 'price'=>'70.70',
-                'image'=>'http://maxcamisetas.com/wp-content/uploads/2014/04/slider-maxcamisetas-21.jpg',
+                'image'=>'http://mm3.vistoenpantalla.com/imagenes-productos/camiseta-ant-man-mod1-large2.jpg',
                 'visible'=>1,
                 'created_at'=>new DateTime(),
                 'updated_at'=>new DateTime(),
@@ -115,11 +115,11 @@ class ProductTableSeeder extends Seeder
             'description'=> 'Juego de Tronossit amet, consectetur adipisicing elit. Eligendi non quis exercitationem culpa nesciunt nihil aut nostrum explicabo reprehenderit optio amet ab temporibus asperiores quasi cupiditate. Voluptatum ducimus voluptates voluptas',
             'extract'=>'Juego de Tronossit amet, consectetur adipisicing elit. Eligendi non quis exercitationem',
             'price'=>'70.70',
-            'image'=>'http://maxcamisetas.com/wp-content/uploads/2013/01/slider-maxcamisetas-3.jpg',
+            'image'=>'https://www.camisetasdejuegodetronos.com/wp-content/uploads/2013/11/juego_tronos_casa_stark.jpg',
             'visible'=>1,
             'created_at'=>new DateTime(),
             'updated_at'=>new DateTime(),
-            'category_id'=>2
+            'category_id'=>1
             ]);
         Product::insert($data);
 

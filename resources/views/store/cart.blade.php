@@ -5,6 +5,7 @@
         <div class="page-header">
             <h1><i class="fa fa-shopping-cart"></i> Carrito de la Compra</h1>
         </div>
+
         @if(count($cart))
             <p>
                 <a href="{{ route('cart-trash') }}" class="btn btn-danger"><i class="fa fa-trash"></i> Vaciar el Carrito</a>
@@ -65,7 +66,9 @@
         </div>
 
             @else
+            <div style="margin-bottom: 200px">
         <h3 class="mensaje-alerta span label label-warning">Tu carrito está vacío.</h3>
+            </div>
         @endif
     </div>
 @endsection

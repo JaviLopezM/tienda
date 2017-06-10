@@ -14,7 +14,7 @@
                 <tr><td>Correo:</td><td>{{Auth::user()->email}}</td></tr>
                 <tr><td>Dirección</td><td>{{Auth::user()->address}}</td></tr>
                 <tr><td>Código Postal:</td><td>{{Auth::user()->postal}}</td></tr>
-                <tr><td>Dirección:</td><td>{{Auth::user()->locality}}</td></tr>
+                <tr><td>Localidad:</td><td>{{Auth::user()->locality}}</td></tr>
             </table>
         </div>
     <div class="col-md-6">
@@ -23,7 +23,7 @@
             <tr><td>Nombre:</td><td>{{Auth::user()->name2 . " " . Auth::user()->last_name2}}</td></tr>
             <tr><td>Dirección</td><td>{{Auth::user()->address2}}</td></tr>
             <tr><td>Código Postal:</td><td>{{Auth::user()->postal2}}</td></tr>
-            <tr><td>Dirección:</td><td>{{Auth::user()->locality2}}</td></tr>
+            <tr><td>Localidad:</td><td>{{Auth::user()->locality2}}</td></tr>
             <tr style="font-weight: bold"><td>Misma dirección de registro</td><td>Enviar a otra dirección</td></tr>
             <tr><td><a class="btn btn-primary" href="{{ route('keep') }}"> mantener</a></td><td>
                     <button class="btn btn-primary"  id="myBtn"> Cambiar</button>
@@ -48,13 +48,19 @@
                  <td>{{number_format($item->price * $item->quantity,2)}}€</td>
                 </tr>
             @endforeach
+                <tr>
+                    <td>
+                        Gastos de envío
+                    </td>
+                    <td>{{$ship}} €</td>
+                </tr>
                 <tr style="font-weight: bold;border-top: black 5px solid ">
                     <td>
                         <h3 style="font-weight: bold">Total</h3>
                     </td>
                     <td></td><td></td>
                     <td>
-                        <h3>{{ number_format($total,2) }} €</h3>
+                        <h3>{{ number_format($ship+$total,2) }} €</h3>
 
                     </td>
                 </tr>

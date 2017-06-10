@@ -44,3 +44,14 @@ a.none{
 .changeDirection{
     visibility: hidden;
 }
+.footer {
+    background-color: #222222;
+    border-top: 4px solid cadetblue;
+    color: cadetblue;
+    height: auto;
+    margin-top: 20px;
+}
+.paddingBottom {
+    padding-bottom: 2%;
+
+}

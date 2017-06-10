@@ -28,6 +28,26 @@
             margin-right: 6px;
         }
     </style>
+    <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css" />
+    <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js"></script>
+    <script>
+        window.addEventListener("load", function(){
+            window.cookieconsent.initialise({
+                "palette": {
+                    "popup": {
+                        "background": "#252e39"
+                    },
+                    "button": {
+                        "background": "#14a7d0"
+                    }
+                },
+                "content": {
+                    "message": "Este sitio web utiliza cookies para mejorar la experiencia si  continua navegando se asumira que acepta nuestra política de cookies.",
+                    "dismiss": "De acuerdo",
+                    "link": "Más info"
+                }
+            })});
+    </script>
 </head>
 <body id="app-layout">
     <nav class="navbar navbar-default navbar-static-top">
@@ -62,10 +82,14 @@
                         <li><a href="{{ url('/login') }}">Login</a></li>
                         <li><a href="{{ url('/register') }}">Registro</a></li>
                     @else
-                        <li><a href="{{ route('cart-show') }}" ><i class="fa fa-shopping-cart"></i>
-                            <span>
-                            {{$totalqty}}
-                            </span></a></li>
+                        <li><a href="{{ route('cart-show') }}" > <i class="fa fa-shopping-cart"></i>
+                                @if($totalqty > 0)
+                                 <span>
+                                     {{$totalqty}}
+                                 </span>
+                                @endif
+                            </a>
+                        </li>
                         <li><a class="none"><i class="fa fa-user"></i>                           </a></li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -98,7 +122,42 @@
         });
     </script>
 
+<footer class="row footer paddingBottom">
+    <div class="col-md-4  col-md-offset-1">
+        <h3>Información</h3>
+        <p>Esta es una aplicación de prueba y los contenidos no son reales.</p>
+    </div>
+    <div class="col-md-4">
+    <h3>Tecnologías</h3>
+        <ul>
+            <li>
+                Realizado con Laravel 5.3.
+            </li>
+            <li>
+                Maquetado con Bootsrap.
+            </li>
+            <li>
+                Funcionalidades JavaScript.
+            </li>
+            <li>
+                Implementación de la Api de Paypal.
+            </li>
+            <li>
+                Utilización de iconos Font Awesome.
+            </li>
+        </ul>
 
 
+    </div>
+    <div class="col-md-3">
+        <h3>Realizado</h3>
+        Realizado por <a href="http://javierlopez.ml">Javier López</a>
+        <h3>Contacto</h3>
+        <a href="https://twitter.com/_javierlm" class="btn btn-primary "><i class="fa fa-twitter"></i></a>
+        <a href="mailto:info@javierlopez.ml" class="btn btn-primary"><i class="fa fa-envelope"></i></a>
+        <a href="http://javierlopez.ml" class="btn btn-primary"><i class="fa fa fa-globe"></i></a>
+    </div>
+</footer>
 </body>
+
 </html>

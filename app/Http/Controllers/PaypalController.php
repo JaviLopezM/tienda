@@ -27,8 +27,8 @@ use PayPal\Api\ExecutePayment;
 use PayPal\Api\PaymentExecution;
 use PayPal\Api\Transaction;
 
-//use App\Order;
-//use App\OrderItem;
+use App\Order;
+use App\OrderItem;
 
 class PaypalController extends BaseController
 {
@@ -44,6 +44,7 @@ class PaypalController extends BaseController
 
     public function postPayment()
     {
+        $shippment = \Session::get('shippment');
         $payer = new Payer();
         $payer->setPaymentMethod('paypal');
 
@@ -70,9 +71,10 @@ class PaypalController extends BaseController
         $details = new Details();
         $details->setSubtotal($subtotal)
         // Gastos de envio
-            ->setShipping(10);
 
-        $total = $subtotal + 10;
+            ->setShipping($shippment);
+
+        $total = $subtotal + $shippment;
 
         $amount = new Amount();
         $amount->setCurrency($currency)
@@ -154,10 +156,10 @@ class PaypalController extends BaseController
 
 
         if ($result->getState() == 'approved') {
-
-//            $this->saveOrder();
-
-//            \Session::forget('cart');
+// Guardo la información del pedido.
+            $this->saveOrder();
+//Elimino el carro
+            \Session::forget('cart');
 
             return \Redirect::route('home')
                 ->with('message', 'Compra realizada de forma correcta');
@@ -165,35 +167,35 @@ class PaypalController extends BaseController
         return \Redirect::route('home')
             ->with('message', 'La compra fue cancelada');
     }
+// Funciones para administrar los pedidos
+    protected function saveOrder()
+    {
+        $subtotal = 0;
+        $cart = \Session::get('cart');
+        $shipping = \Session::get('shippment');
 
-//    protected function saveOrder()
-//    {
-//        $subtotal = 0;
-//        $cart = \Session::get('cart');
-//        $shipping = 100;
-//
-//        foreach($cart as $producto){
-//            $subtotal += $producto->quantity * $producto->price;
-//        }
-//
-//        $order = Order::create([
-//            'subtotal' => $subtotal,
-//            'shipping' => $shipping,
-//            'user_id' => \Auth::user()->id
-//        ]);
-//
-//        foreach($cart as $producto){
-//            $this->saveOrderItem($producto, $order->id);
-//        }
-//    }
+        foreach($cart as $producto){
+            $subtotal += $producto->quantity * $producto->price;
+        }
 
-//    protected function saveOrderItem($producto, $order_id)
-//    {
-//        OrderItem::create([
-//            'price' => $producto->price,
-//            'quantity' => $producto->quantity,
-//            'product_id' => $producto->id,
-//            'order_id' => $order_id
-//        ]);
-//    }
+        $order = Order::create([
+            'subtotal' => $subtotal,
+            'shipping' => $shipping,
+            'user_id' => \Auth::user()->id
+        ]);
+
+        foreach($cart as $producto){
+            $this->saveOrderItem($producto, $order->id);
+        }
+    }
+// Funciones para administrar los items de los pedidos
+    protected function saveOrderItem($producto, $order_id)
+    {
+        OrderItem::create([
+            'price' => $producto->price,
+            'quantity' => $producto->quantity,
+            'product_id' => $producto->id,
+            'order_id' => $order_id
+        ]);
+    }
 }

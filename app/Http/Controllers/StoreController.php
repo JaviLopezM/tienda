@@ -10,11 +10,11 @@ class StoreController extends Controller
 {
     public function index()
     {
-
-        $products =Product::all();
+        //Seleccionar todos los productos de una categoria:
+        //  $products = Product::having('category_id', '=', 1)->get();
+        $products = Product::orderBy('category_id')->get();
         $totalqty = $this->totalqty();
-        //dd($products);
-        return view('store.index', compact('products', 'totalqty'));
+          return view('store.index', compact('products', 'totalqty'));
     }
     public function show($slug)
     {
