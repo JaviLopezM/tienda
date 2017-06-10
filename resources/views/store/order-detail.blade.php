@@ -72,9 +72,6 @@
         <i class="fa fa-chevron-circle-left fa-x2"></i> Volver al carrito</a>
     <a href="{{ route('payment') }}" class="btn btn-primary" style="font-size: larger">
         Finalizar <i class="fa fa-paypal fa-x2"></i></a>
-        <a href="{{ route('payment') }}" class="btn btn-warning">
-            Pagar con <i class="fa fa-cc-paypal fa-2x"></i>
-        </a>
     </div>
 
 
