@@ -1,6 +1,6 @@
 <?php
 use App\Product;
-use PDF;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -118,9 +118,6 @@ Route::get('/order/{id}', array(
 Route::get('/genRss', 'rssController@genRss');
 Route::get('/rss', 'rssController@rss');
 
-/*
- * @PDF
- */
 Route::get('/pdf', function() {
 
     if(count(\Session::get('cart'))<=0) return redirect()-route('home');
