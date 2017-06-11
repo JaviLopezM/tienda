@@ -67,11 +67,12 @@
             </table>
         </div>
     <hr>
-    <div class="col-md-10" style="text-align: center; margin-bottom: 50px">
-    <a href="{{ route('cart-show') }}" class="btn btn-primary" style="font-size: larger">
+    <div class="col-md-10 col-md-offset-1" style="text-align: center; margin-bottom: 50px">
+    <a href="{{ route('cart-show') }}" class="btn btn-primary" style="font-size: large;  margin-bottom:10px">
         <i class="fa fa-chevron-circle-left fa-x2"></i> Volver al carrito</a>
-    <a href="{{ route('payment') }}" class="btn btn-primary" style="font-size: larger">
-        Finalizar <i class="fa fa-paypal fa-x2"></i></a>
+    <a href="{{ route('payment') }}" class="btn btn-primary" style="font-size: larger; margin-bottom:10px">
+        Finalizar con Paypal <i class="fa fa-paypal fa-x2"></i></a>
+        <button class="btn btn-primary"  id="tjBtn" style="font-size: large; margin-bottom:10px"> Pagar con Tarjeta <i class="fa fa-credit-card fa-x2"></i></button>
     </div>
 
 
@@ -80,7 +81,7 @@
             <div class="modal-dialog">
 
                 <!-- Modal content-->
-                <div class="modal-content">
+                <div class="modal-content col-xs-10 col-xs-offset-1 col-md-12">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                         <h4 class="modal-title">Cambiar datos de envío</h4>
@@ -114,6 +115,52 @@
                             <br>
                         </form>
                     </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="modal fade" id="tjModal" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content col-xs-10 col-xs-offset-1 col-md-8 col-md-offset-2">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Pago con tarjeta</h4>
+                    </div>
+                    <div class="row">
+                        <div class="modal-body col-md-6 col-md-offset-3">
+                                <div class="form-group ">
+                                    <label for="tj"> Tipo de tarjeta</label>
+                                    <input type="text" name="tj" class="form-control"  id="tj" placeholder="MasterCard, Visa, American express...">
+                                </div>
+                                <div class="form-group">
+                                    <label for="nametj">Nombre y apellidos del titular</label>
+                                    <input type="text" name="nametj" class="form-control"  id="nametj">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="numtj">Número de Tarjeta</label>
+                                    <input type="text" pattern="[0-9]{20}" name="numtj" class="form-control" id="numtj">
+                                </div>
+                                <div class="form-group ">
+                                    <label for="cadtj">Fecha de caducidad</label>
+                                    <input type="text" name="cadtj" class="form-control" id="cadtj">
+                                </div>
+                                <div class="form-group">
+                                    <label for="cvv">Numero CVV</label>
+                                    <input type="text" name="cvv" pattern="[0-9]{3}" class="form-control"  id="cvv">
+                                </div>
+                            <button type="button" class="btn btn-primary" data-dismiss="modal">Realizar el pago</button>
+                                <input type="hidden" value="{{ Session::token() }}" name="_token">
+                                <br>
+                            </form>
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>

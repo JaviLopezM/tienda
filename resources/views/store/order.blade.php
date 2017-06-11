@@ -6,7 +6,7 @@
             <div class="col-md-6 ">
 
                 <table class="table table responsive" style="margin-top: 10%">
-                    <h3>Pedido nº {{ $order->id }}{{ date('d-m-Y', strtotime($order->created_at)) }}</h3>
+                    <h3>Pedido nº {{ $order->id }}-{{ date('dm-Y', strtotime($order->created_at)) }}</h3>
                     <tr class="success">
                     <th>
                         Nombre del producto

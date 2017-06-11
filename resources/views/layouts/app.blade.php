@@ -51,7 +51,7 @@
     </script>
 </head>
 <body id="app-layout">
-    <nav class="navbar navbar-default navbar-static-top">
+    <nav class="navbar navbar-default navbar-static-top" style="margin-bottom: 10px">
         <div class="container">
             <div class="navbar-header">
 
@@ -91,10 +91,10 @@
                                 @endif
                             </a>
                         </li>
-                        <li><a class="none"><i class="fa fa-user"></i>                           </a></li>
+
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                {{ Auth::user()->user }} <span class="caret"></span>
+                                <i class="fa fa-user"> &nbsp;</i>  {{ Auth::user()->user }} <span class="caret"></span>
                             </a>
 
                             <ul class="dropdown-menu" role="menu">
@@ -122,13 +122,20 @@
             });
         });
     </script>
+    <script>
+        $(document).ready(function(){
+            $("#tjBtn").click(function(){
+                $("#tjModal").modal({show: true});
+            });
+        });
+    </script>
 
 <footer class="row footer paddingBottom">
-    <div class="col-md-4  col-md-offset-1">
+    <div class="col-md-3 col-xs-offset-1">
         <h3>Información</h3>
         <p>Esta es una aplicación de prueba y los contenidos no son reales.</p>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-3 col-xs-offset-1">
     <h3>Tecnologías</h3>
         <ul>
             <li>
@@ -150,7 +157,7 @@
 
 
     </div>
-    <div class="col-md-3">
+    <div class="col-md-3 col-xs-offset-1">
         <h3>Autor</h3>
         Realizado por <a href="http://javierlopez.ml">Javier López</a>
         <h3>Contacto</h3>

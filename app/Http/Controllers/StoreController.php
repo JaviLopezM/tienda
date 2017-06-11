@@ -5,16 +5,20 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Product;
 use App\Http\Requests;
+use App\Category;
 
 class StoreController extends Controller
 {
     public function index()
     {
         //Seleccionar todos los productos de una categoria:
-        //  $products = Product::having('category_id', '=', 1)->get();
-        $products = Product::orderBy('category_id')->get();
+        $category1 = Category::having('id', '=', 1)->get();
+        $category2 = Category::having('id', '=', 2)->get();
+        $cat1 = Product::having('category_id', '=', 1)->get();
+        $cat2 = Product::having('category_id', '=', 2)->get();
+        //$products = Product::orderBy('category_id')->get();
         $totalqty = $this->totalqty();
-          return view('store.index', compact('products', 'totalqty'));
+          return view('store.index', compact('cat1', 'cat2', 'category1', 'category2', 'totalqty'));
     }
     public function show($slug)
     {

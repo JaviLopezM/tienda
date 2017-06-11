@@ -6,21 +6,23 @@
             <h3 style="margin-left:100px">Perfil de {{ $user->user }}</h3>
         </header>
         <div class="row new-post">
-            <div class="col-xs-10 col-xs-offset-1 col-md-2 col-md-offset-2 " style="margin-top: 5em; ">
+            <div class="col-xs-6 col-xs-offset-3 col-md-2 col-md-offset-2 " style="margin-top: 5em; ">
                 <img src="/images/default.jpg" class="img-rounded ">
 
-                <table>
-                    <th>
-                        Historial de Pedidos
+                @if($orders->count())
+                <table class="table table responsive" style="margin-top: 20px">
+                    <th class="success">
+                        <h4>Historial de Pedidos</h4>
                     </th>
                     @foreach($orders as $order)
                         <tr>
                             <td>
-                             <a href="{{route('order',$order ->id)}}">{{$order ->id}} - {{$order->created_at}}</a>
+                             <a href="{{route('order',$order ->id)}}" style="font-size: large">· {{$order ->id}}-{{ date('dm-Y', strtotime($order->created_at)) }}</a>
                             </td>
                         </tr>
                         @endforeach
                 </table>
+                    @endif
             </div>
 
 
