@@ -92,6 +92,10 @@ Route::get('/keep', [
     'as' => 'keep',
     'uses' => 'CartController@keep'
 ]);
+
+/*
+ * @Rutas actualizar Carrito
+ */
 Route::post('/updateShipping', [
     'as' => 'updateShipping',
     'uses' => 'CartController@updateShipping'
@@ -99,12 +103,16 @@ Route::post('/updateShipping', [
 Route::get('/register/confirm/{token}', [
     'uses' => 'Auth\RegisterController@confirmEmail'
 ]);
-
+/*
+ * @Rutas Paypal
+ */
 Route::get('payment', array(
     'as' => 'payment',
     'uses' => 'PaypalController@postPayment',
 ));
-
+/*
+ * Rutas PayPal status
+ */
 Route::get('payment/status', array(
     'as' => 'payment.status',
     'uses' => 'PaypalController@getPaymentStatus',
@@ -114,10 +122,16 @@ Route::get('/order/{id}', array(
     'as' => 'order',
     'uses' => 'HomeController@getorder',
 ));
-//Rss
-Route::get('/genRss', 'rssController@genRss');
+/*
+ * Rutas para RSS
+ */
+Route::get('/genRss', 'rssController@genRss')->middleware('auth');
 Route::get('/rss', 'rssController@rss');
 
+
+/*
+ * Rutas para PDF
+ */
 Route::get('/pdf', function() {
 
     if(!count(\Session::get('cart')))
