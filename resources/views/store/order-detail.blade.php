@@ -73,6 +73,8 @@
     <a href="{{ route('payment') }}" class="btn btn-primary" style="font-size: larger; margin-bottom:10px">
         Finalizar con Paypal <i class="fa fa-paypal fa-x2"></i></a>
         <button class="btn btn-primary"  id="tjBtn" style="font-size: large; margin-bottom:10px"> Pagar con Tarjeta <i class="fa fa-credit-card fa-x2"></i></button>
+        <a href="{{ URL('/pdf') }}" class="btn btn-primary" style="font-size: larger; margin-bottom:10px">
+            Descargar comprobante <i class="fa fa-download fa-x2"></i></a>
     </div>
 
 

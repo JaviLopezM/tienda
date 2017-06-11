@@ -1,5 +1,6 @@
 <?php
 use App\Product;
+use PDF;
 
 /*
 |--------------------------------------------------------------------------
@@ -116,3 +117,15 @@ Route::get('/order/{id}', array(
 //Rss
 Route::get('/genRss', 'rssController@genRss');
 Route::get('/rss', 'rssController@rss');
+
+/*
+ * @PDF
+ */
+Route::get('/pdf', function() {
+
+    if(count(\Session::get('cart'))<=0) return redirect()-route('home');
+    $cart = \Session::get('cart');
+    $pdf = PDF::loadView('store.doc', ['cart' => $cart]);
+    return $pdf->download('javishop-doc.pdf');
+
+})->middleware('auth');

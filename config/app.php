@@ -151,6 +151,7 @@ return [
 
 
 
+
         /*
          * Application Service Providers...
          */
@@ -160,6 +161,8 @@ return [
         App\Providers\RouteServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
         Thujohn\Rss\RssServiceProvider::class,
+        Mpociot\ApiDoc\ApiDocGeneratorServiceProvider::class,
+        Barryvdh\DomPDF\ServiceProvider::class,
 
     ],
 
@@ -211,6 +214,7 @@ return [
         'Notification' => Illuminate\Support\Facades\Notification::class,
         'Input'     => Illuminate\Support\Facades\Input::class,
         'Rss' => Thujohn\Rss\RssFacade::class,
+        'PDF' => Barryvdh\DomPDF\Facade::class,
 
     ],
 
