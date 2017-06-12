@@ -13,17 +13,17 @@
         @foreach($products as $product)
             @if ($product==$products->last() )
                 <div class="item active">
-                    <img src="http://maxcamisetas.com/wp-content/uploads/2013/01/slider-maxcamisetas-3.jpg" alt="slide1">
+                    <img src="http://maxcamisetas.com/wp-content/uploads/2013/01/slider-maxcamisetas-3.jpg" alt="slide1" class="imgSld">
                 </div>
             @endif
                 @if ($product->id == ($products->last()->id -1) )
                     <div class="item">
-                        <img src="http://maxcamisetas.com/wp-content/uploads/2014/04/slider-maxcamisetas-21.jpg" alt="slide2">
+                        <img src="http://maxcamisetas.com/wp-content/uploads/2014/04/slider-maxcamisetas-21.jpg" alt="slide2" class="imgSld">
                     </div>
                 @endif
                 @if ($product->id == ($products->last()->id -2) )
                     <div class="item">
-                        <img src="http://maxcamisetas.com/wp-content/uploads/2013/01/slider-maxcamisetas-1.jpg" alt="slide3">
+                        <img src="http://maxcamisetas.com/wp-content/uploads/2013/01/slider-maxcamisetas-1.jpg" alt="slide3" class="imgSld">
                     </div>
                 @endif
         @endforeach

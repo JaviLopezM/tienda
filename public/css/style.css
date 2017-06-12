@@ -1,12 +1,16 @@
+body { padding-top: 70px; }
 #products {
     position: relative;
     max-width: 100%;
     width: 100%;
 }
-img {
+.imgSld {
     width: 100%;
     max-width: 100%;
     height: auto;
+}
+.center{
+    text-align: center;
 }
 .white-panel {
     position: absolute;
@@ -50,14 +54,18 @@ a.none{
     color: cadetblue;
     bottom:0;
     /*display:block;*/
-    margin: 0 !important;
+    margin-right: 0 !important;
+    margin-top: 5%;
 
+}
+marginBottom {
+    margin-bottom: 5%;
 }
 .paddingBottom {
     padding-bottom: 2%;
 }
 .Mjgb {
-    filter:alpha(opacity=70);
+    filter:alpha(opacity=65);
     opacity: 0.9;
     transition: all 1s;
     -moz-transition: all 1s;

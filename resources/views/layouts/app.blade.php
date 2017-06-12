@@ -51,7 +51,7 @@
     </script>
 </head>
 <body id="app-layout">
-    <nav class="navbar navbar-default navbar-static-top" style="margin-bottom: 10px">
+    <nav class="navbar navbar-default navbar-static-top navbar-fixed-top" role="navigation" style="margin-bottom: 10px">
         <div class="container">
             <div class="navbar-header">
 
@@ -133,7 +133,7 @@
 <footer class="row footer paddingBottom">
     <div class="col-md-3 col-xs-offset-1">
         <h3>Información</h3>
-        <p>Esta es una aplicación de prueba y los contenidos no son reales.</p>
+        <p>Esta es una aplicación promocional y los contenidos no son reales.</p>
     </div>
     <div class="col-md-3 col-xs-offset-1">
     <h3>Tecnologías</h3>
@@ -152,6 +152,9 @@
             </li>
             <li>
                 Utilización de iconos Font Awesome.
+            </li>
+            <li>
+                Utilización de DomPDF.
             </li>
         </ul>
 

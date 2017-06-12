@@ -59,11 +59,11 @@
                 </tbody>
             </table>
             <hr>
-            <a href="{{ route('store') }}" class="btn btn-primary" style="font-size: larger">
-                <i class="fa fa-chevron-circle-left"></i> Seguir comprando</a>
-            <a href="{{ route('order-detail') }}" class="btn btn-primary" style="font-size: larger">
-                Procesar pedido <i class="fa fa-chevron-circle-right"></i></a>
         </div>
+            <a href="{{ route('store') }}" class="btn btn-primary" style="font-size: larger; margin:2%">
+                <i class="fa fa-chevron-circle-left"></i> Seguir comprando</a>
+            <a href="{{ route('order-detail') }}" class="btn btn-primary marginBottom" style="font-size: larger">
+                Procesar pedido <i class="fa fa-chevron-circle-right"></i></a>
 
             @else
             <div style="margin-bottom: 200px">
