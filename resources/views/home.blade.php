@@ -7,7 +7,7 @@
         </header>
         <div class="row new-post">
             <div class="col-xs-6 col-xs-offset-3 col-md-2 col-md-offset-2 " style="margin-top: 5em; ">
-                <img src="/images/default.jpg" class="img-rounded ">
+                <img src="/images/default.jpg" class="img-circle " style="width: 100%">
 
                 @if($orders->count())
                 <table class="table table responsive" style="margin-top: 20px">
@@ -22,9 +22,10 @@
                         </tr>
                         @endforeach
                 </table>
-                    @endif
-            </div>
 
+                    @endif
+
+            </div>
 
             <div class="col-xs-10 col-xs-offset-1 col-md-6 form">
                 <header>
