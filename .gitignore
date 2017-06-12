@@ -4,5 +4,5 @@
 /.idea
 Homestead.yaml
 Homestead.json
-.env
+.env*
 github_rsa*
