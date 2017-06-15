@@ -20,8 +20,9 @@
                              </div>
                              <div class="panel-body" style="font-weight:bold; text-align: right">
                                  <h3>{{number_format($product->price,2)}}€</h3> <br/>
-                                 <a href="{{ route('cart-add', $product->slug) }}" class="btn btn-warning">Añadir al carrito</a>
-                                 <a href="/" class="btn btn-primary">ir al inicio</a>
+                                 <a href="{{ route('cart-add', $product->slug) }}" class="btn btn-warning">
+                                     <i class="fa fa-shopping-cart"></i> Añadir al carrito</a>
+                                 <a href="/" class="btn btn-primary"><i class="fa fa-chevron-circle-right"></i> volver al store</a>
                              </div>
                          </div>
                          </div>

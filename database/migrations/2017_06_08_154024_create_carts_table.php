@@ -15,8 +15,6 @@ class CreateCartsTable extends Migration
     {
         Schema::create('carts', function (Blueprint $table) {
             $table->increments('id');
-            $table->decimal('subtotal', 5, 2);
-            $table->decimal('shipping', 5,2);
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')
                 ->references('id')

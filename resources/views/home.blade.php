@@ -22,8 +22,26 @@
                         </tr>
                         @endforeach
                 </table>
-
+                    <br/>
                     @endif
+                @if($myCarts->count())
+                    <table class="table table responsive" style="margin-top: 20px">
+                        <th class="success" colspan="2">
+                            <h4>Carritos guardados</h4>
+                        </th>
+                        @foreach($myCarts as $cart)
+                            <tr>
+                                <td>
+                                    <a href="{{route('getCart',$cart->id)}}" style="font-size: large">· {{$cart ->id}}-{{ date('dm-Y', strtotime($cart->created_at)) }}</a>
+                                </td>
+                                <td>
+                                    <a href="{{ route('myCart-delete', $cart->id) }}" class="btn btn-danger"><i class="fa fa-remove"></i></a>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </table>
+
+                @endif
 
             </div>
 

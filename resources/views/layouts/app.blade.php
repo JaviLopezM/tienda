@@ -156,6 +156,9 @@
             <li>
                 Utilización de DomPDF.
             </li>
+            <li>
+                Utilización del componente Thujohn\Rss.
+            </li>
         </ul>
 
 

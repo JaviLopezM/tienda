@@ -143,3 +143,21 @@ Route::get('/pdf', function() {
         return $pdf->download('javishop-doc.pdf');
     }
 })->middleware('auth');
+
+/*
+ * Guardar carrito en la base de datos
+ */
+Route::get('/save-cart/', array(
+    'as' => 'saveCart',
+    'uses' => 'CartController@saveCart',
+))->middleware('auth');
+
+
+Route::get('/get-cart/{id}', array(
+    'as' => 'getCart',
+    'uses' => 'CartController@getCart',
+))->middleware('auth');
+Route::get('/myCart-delete/{id}', array(
+    'as' => 'myCart-delete',
+    'uses' => 'CartController@destroy',
+))->middleware('auth');

@@ -64,6 +64,8 @@
                 <i class="fa fa-chevron-circle-left"></i> Seguir comprando</a>
             <a href="{{ route('order-detail') }}" class="btn btn-primary marginBottom" style="font-size: larger">
                 Procesar pedido <i class="fa fa-chevron-circle-right"></i></a>
+            <a href="{{ route('saveCart') }}" class="btn btn-primary marginBottom" style="font-size: larger">
+                Guardar Carrito para después <i class="fa fa-chevron-circle-down"></i></a>
 
             @else
             <div style="margin-bottom: 200px">

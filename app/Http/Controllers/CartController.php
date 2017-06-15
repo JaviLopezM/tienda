@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Cart;
+use App\CartItem;
 use Illuminate\Http\Request;
 //use Illuminate\Support\Facades\Session;
 
@@ -34,7 +36,7 @@ class CartController extends Controller
     public function add(Product $product)
     {
         $cart = \Session::get('cart');
-        $product -> quantity =1;
+        $product -> quantity = 1;
         $cart[$product ->slug] = $product;
         \Session::put('cart', $cart);
 
@@ -86,7 +88,7 @@ class CartController extends Controller
     }
     public function orderDetail()
     {
-        if(count(\Session::get('cart'))<=0) return redirect()-route('home');
+        if(count(\Session::get('cart'))<=0) return redirect()->route('home');
         $cart = \Session::get('cart');
         $total = $this->total();
         $user = Auth::user();
@@ -144,4 +146,54 @@ class CartController extends Controller
 
         return redirect() ->route('order-detail');
     }
+    public function saveCart()
+    {
+        $cartIn = Cart::create([
+          'user_id' => \Auth::user()->id
+        ]);
+
+        $cart = \Session::get('cart');
+        foreach($cart as $product){
+            $this->saveCartItem($product, $cartIn->id);
+        }
+        return redirect()->back();
+    }
+    public function saveCartItem($product, $cartIn_id)
+    {
+        CartItem::create([
+            'quantity' => $product->quantity,
+            'product_slug' => $product->slug,
+            'product_id' => $product->id,
+            'cart_id' => $cartIn_id
+        ]);
+
+    }
+    public function getCart($cart_id)
+    {
+        $cartMe = Cart::find($cart_id);
+
+
+        if(!count($cartMe) || $cartMe->user_id != \Auth::user()->id ){
+            return redirect()->route('home')->with(['status' => "Carrito equivocado"]);
+        }else{
+            $this->trash();
+            $cartItems = CartItem::having('cart_id', '=', $cart_id)->get();
+            foreach($cartItems as $item) {
+            $product = Product::findOrFail($item->product_id);
+            $quantity = $item->quantity;
+            $product -> quantity = $quantity;
+            $cart[$product ->slug] = $product;
+            \Session::put('cart', $cart);
+        }
+            return redirect() ->route('cart-show');
+        }
+    }
+
+    public function destroy($id)
+    {
+        Cart::destroy($id);
+        return redirect()->back();
+    }
+
+
 }

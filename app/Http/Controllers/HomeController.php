@@ -8,6 +8,7 @@ use App\User;
 use App\Order;
 use App\OrderItem;
 use App\Product;
+use App\Cart;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\URL;
 use Thujohn\Rss\Rss;
@@ -36,7 +37,8 @@ class HomeController extends Controller
              $orders=Order::having('user_id', '=', $id)->get();
                  //  $products = Product::having('category_id', '=', 1)->get();
              $totalqty = $this->totalqty();
-            return view('home',compact('user', 'totalqty', 'orders'));
+             $myCarts = Cart::having('user_id', '=', $id)->get();
+            return view('home',compact('user', 'totalqty', 'orders', 'myCarts'));
         }else {
             return redirect('/');
         }
@@ -58,7 +60,7 @@ class HomeController extends Controller
         if($order->user_id == Auth::user()->id){
             $products=Product::all();
             $items=OrderItem::having('order_id', '=', $id)->get();
-             //  $products = Product::having('category_id', '=', 1)->get();
+
             $totalqty = $this->totalqty();
             return view('store.order',compact('user', 'totalqty', 'order', 'items', 'products'));
         }else {
