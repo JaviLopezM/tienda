@@ -15,15 +15,15 @@ class CategoryTableSeeder extends Seeder
     {
         $data = array(
             [
-                'name'=>'Súper heroes',
-                'slug'=>'super-heroes',
+                'name'=>'Cómic Marvel',
+                'slug'=>'comic-marvel',
                 'description'=> 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi non quis exercitationem culpa nesciunt nihil aut nostrum explicabo reprehenderit optio amet ab temporibus asperiores quasi cupiditate. Voluptatum ducimus voluptates voluptas',
                 'color'=>'#4402'
 
             ],
             [
-                'name'=>'Geek',
-                'slug'=>'geek',
+                'name'=>'Cómic DC',
+                'slug'=>'comic-dc',
                 'description'=>'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi non quis exercitationem',
                 'color'=>'#445500'
             ]);
