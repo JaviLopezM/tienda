@@ -85,3 +85,40 @@ a.none{
   } .texto mj {
         padding: 15px;
     }
+
+/*Menu lateral*/
+ul#navigation {
+    position: fixed;
+    margin: 0px;
+    padding: 0px;
+    top: 55px;
+    left: 0px;
+    list-style: none;
+    text-align: center;
+    z-index:9999;
+}
+
+ul#navigation li {
+    width: 100px;
+}
+
+ul#navigation li a {
+    padding-top: 10px;
+    text-decoration: none;
+    display: block;
+    margin-left: -85px;
+    width: 200px;
+    height: 70px;
+    background-color:#ecf0f1;
+    background-repeat:no-repeat;
+    background-position:center center;
+    border:1px solid #AFAFAF;
+    box-shadow:  2px 2px 8px #939393;
+    -moz-border-radius:0px 10px 10px 0px;
+    -webkit-border-bottom-right-radius: 10px;
+    -webkit-border-top-right-radius: 10px;
+    -khtml-border-bottom-right-radius: 10px;
+    -khtml-border-top-right-radius: 10px;
+    /*opacity: 0.7;*/
+
+}

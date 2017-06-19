@@ -1,11 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
+    <ul id="navigation">
+        <li class="Imagen2"><a href="#marvel" title="Marvel"><h4>Comic Marvel</h4></a></li>
+        <li class="Imagen3"><a href="#dc" title="DC"><h4>Cómic DC</h4></a></li>
+    </ul>
     <div class="container">
-        <div class="row">
-            <h3>Comic Marvel</h3>
-        </div>
         <div class="row" id="products">
+            <a name="marvel" ><br/><br/></a>
+            <h3>Comic Marvel</h3>
             @foreach($cat1 as $product)
                 <div class="col-md-4 white-panel Mjgb">
                     <div class="panel panel-default">
@@ -26,6 +29,7 @@
             @endforeach
         </div>
         <div class="row">
+            <a name="dc" ><br/><br/></a>
             <h3>Comic DC</h3>
         </div>
         <div class="row" id="products">

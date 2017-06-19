@@ -80,8 +80,8 @@
                 <ul class="nav navbar-nav navbar-right">
                     <!-- Authentication Links -->
                     @if (Auth::guest())
-                        <li><a href="{{ url('/login') }}">Login</a></li>
-                        <li><a href="{{ url('/register') }}">Registro</a></li>
+                        <li role="menu"><a href="{{ url('/login') }}">Login</a></li>
+                        <li role="menu"><a href="{{ url('/register') }}">Registro</a></li>
                     @else
                         <li><a href="{{ route('cart-show') }}" > <i class="fa fa-shopping-cart"></i>
                                 @if($totalqty > 0)
@@ -99,7 +99,6 @@
 
                             <ul class="dropdown-menu" role="menu">
                                 <li><a href="{{ route('perfil',Auth::user()->id) }}"><i class="fa fa-btn fa-id-badge"></i> Perfil</a></li>
-                                {{--<li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>--}}
                                 <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fa fa-btn fa-sign-out"></i>Logout</a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">{{ csrf_field() }}</form></li>
@@ -127,6 +126,20 @@
             $("#tjBtn").click(function(){
                 $("#tjModal").modal({show: true});
             });
+        });
+    </script>
+    <script>
+        $(function() {
+            $('#navigation a').stop().animate({'marginLeft':'-180px'},1000);
+
+            $('#navigation > li').hover(
+                function () {
+                    $('a',$(this)).stop().animate({'marginLeft':'0px'},200);
+                },
+                function () {
+                    $('a',$(this)).stop().animate({'marginLeft':'-180px'},200);
+                }
+            );
         });
     </script>
 
